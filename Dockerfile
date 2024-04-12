@@ -28,6 +28,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install --only=production
+RUN npm cache clean --force
+RUN rm -rf node_modules
 
 FROM base as without-grpc-health-probe-bin
 
