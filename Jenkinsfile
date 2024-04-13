@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-     stages {
+    stages {
         stage('Update & Upgrade Packages') {
             steps {
                 script {
@@ -20,8 +20,6 @@ pipeline {
             }
         }
 
-
-    stages {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
@@ -31,12 +29,12 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Push Docker Image') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        sh "docker push limkel/productcatalogservice:2.0 "
+                        sh "docker push limkel/productcatalogservice:2.0"
                         sh "docker rmi -f limkel/productcatalogservice:2.0"
                     }
                 }
