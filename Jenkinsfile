@@ -1,8 +1,7 @@
 pipeline {
     agent any
 
-    
-
+    stages {
         stage('Install grpc_health_probe') {
             steps {
                 script {
@@ -26,7 +25,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        sh "docker push limkel/paymentservice:2.0 "
+                        sh "docker push limkel/paymentservice:2.0"
                         sh "docker rmi -f limkel/paymentservice:2.0"
                     }
                 }
