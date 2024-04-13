@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Deploy To Kubernetes') {
             steps {
-                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube', namespace: 'jenkins', serverUrl: ' https://192.168.49.2:8443']]) {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '.kube', namespace: 'jenkins', serverUrl: ' https://192.168.49.2:8443']]) {
                     sh "kubectl apply -f deployment-service.yml"
                     
                 }
