@@ -1,16 +1,6 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Update & Upgrade Packages') {
-            steps {
-                script {
-                    sh 'apt-get update -y'
-                    sh 'apt-get upgrade -y'
-                }
-            }
-        }
-
         stage('Install grpc_health_probe') {
             steps {
                 script {
