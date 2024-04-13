@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        sh "docker build -t limkel/emailservice:2.0 ."
+                        sh "docker build -t limkel/emailservice:2.2 ."
                     }
                 }
             }
@@ -25,8 +25,8 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        sh "docker push limkel/emailservice:2.0"
-                        sh "docker rmi -f limkel/emailservice"
+                        sh "docker push limkel/emailservice:2.2"
+                        sh "docker rmi -f limkel/emailservice:2.2"
                     }
                 }
             }
