@@ -26,7 +26,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         sh "docker push limkel/frontend:2.2"
-                        sh "docker rmi -f limkel/frontend:2.2"
+                        sh "docker rmi -f limkel/frontend:2.0"
                     }
                 }
             }
