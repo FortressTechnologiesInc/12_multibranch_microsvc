@@ -26,7 +26,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         sh "docker push limkel/adservice:2.2"
-                        sh "docker rmi -f  limkel/adservice:2.2"
+                        sh "docker rmi -f  limkel/adservice:2.0"
                     }
                 }
             }
