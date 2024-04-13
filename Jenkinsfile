@@ -1,8 +1,7 @@
 pipeline {
     agent any
 
-   
-
+    stages {
         stage('Install grpc_health_probe') {
             steps {
                 script {
