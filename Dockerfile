@@ -16,6 +16,17 @@ FROM node:20.2.0-alpine@sha256:f25b0e9d3d116e267d4ff69a3a99c0f4cf6ae94eadd87f1bf
 
 FROM base as builder
 
+
+WORKDIR /usr/src/app
+RUN apk add --update --no-cache python3 make g++
+COPY package*.json ./
+RUN npm install --only=production
+RUN npm cache clean --force
+RUN rm -rf node_modules
+
+
+
+
 # Some packages (e.g. @google-cloud/profiler) require additional
 # deps for post-install scripts
 RUN apk add --update --no-cache \
