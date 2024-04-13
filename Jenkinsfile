@@ -1,9 +1,7 @@
-pipeline { 
+pipeline {
     agent any
 
-     stages {
-       
-
+    stages {
         stage('Install grpc_health_probe') {
             steps {
                 script {
@@ -13,8 +11,6 @@ pipeline {
             }
         }
 
-
-    stages {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
@@ -24,12 +20,12 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Push Docker Image') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        sh "docker push limkel/shippingservice:2.0 "
+                        sh "docker push limkel/shippingservice:2.0"
                         sh "docker rmi -f limkel/shippingservice:2.0"
                     }
                 }
