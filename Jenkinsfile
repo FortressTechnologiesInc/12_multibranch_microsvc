@@ -4,18 +4,17 @@ pipeline {
     stages {
         stage('Deploy To Kubernetes') {
             steps {
-                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '.kube', namespace: 'webzapp', serverUrl: ' https://192.168.49.2:8443']]) {
-                    sh "kubectl apply -f deployment-service.yml"
-                    
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '.kube', namespace: 'webzapp', serverUrl: 'https://192.168.49.2:8443']]) {
+                    sh "kubectl apply -f deployment-service.yml -n webzapp"
                 }
             }
         }
         
-        stage('verify Deployment') {
+        stage('Verify Deployment') {
             steps {
-                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '.kube', namespace: 'webzapp', serverUrl: ' https://192.168.49.2:8443']]) {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '.kube', namespace: 'webzapp', serverUrl: 'https://192.168.49.2:8443']]) {
                     sh "kubectl get svc -n webzapp"
-                    sh "kubectl get po -n  webzapp"
+                    sh "kubectl get po -n webzapp"
                 }
             }
         }
