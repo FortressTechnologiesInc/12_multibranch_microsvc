@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-   
+    stages {
         stage('Install grpc_health_probe') {
             steps {
                 script {
@@ -26,7 +26,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         sh "docker push limkel/emailservice:2.0"
-                        sh "docker rmi -f limkel/emailservice:2.0"
+                        sh "docker rmi -f limkel/emailservice"
                     }
                 }
             }
