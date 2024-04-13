@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-     stages {
+    stages {
         stage('Update & Upgrade Packages') {
             steps {
                 script {
@@ -20,8 +20,6 @@ pipeline {
             }
         }
 
-
-    stages {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
@@ -31,7 +29,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Push Docker Image') {
             steps {
                 script {
